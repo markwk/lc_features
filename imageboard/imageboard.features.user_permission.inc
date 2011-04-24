@@ -19,7 +19,10 @@ function imageboard_user_default_permissions() {
   // Exported permission: delete any image content
   $permissions['delete any image content'] = array(
     'name' => 'delete any image content',
-    'roles' => array(),
+    'roles' => array(
+      '0' => 'administrator',
+      '1' => 'manager',
+    ),
   );
 
   // Exported permission: delete own image content
@@ -44,6 +47,17 @@ function imageboard_user_default_permissions() {
     'name' => 'edit own image content',
     'roles' => array(
       '0' => 'authenticated user',
+    ),
+  );
+
+  // Exported permission: view field_image
+  $permissions['view field_image'] = array(
+    'name' => 'view field_image',
+    'roles' => array(
+      '0' => 'administrator',
+      '1' => 'anonymous user',
+      '2' => 'authenticated user',
+      '3' => 'manager',
     ),
   );
 
