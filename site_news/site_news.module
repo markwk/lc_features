@@ -1,0 +1,10 @@
+<?php
+
+include_once('site_news.features.inc');
+
+/**
+* Implementation of hook_init().
+*/
+function site_news_init() {
+  drupal_add_css(drupal_get_path('module', 'site_news') .'/news.css');
+}

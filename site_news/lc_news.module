@@ -1,0 +1,35 @@
+<?php
+
+include_once('lc_news.features.inc');
+
+/**
+* Implementation of hook_init().
+*/
+function lc_news_init() {
+  drupal_add_css(drupal_get_path('module', 'lc_news') .'/lc_news.css');
+}
+
+/*
+ * Implementation of hook_menu().
+ */
+function lc_news_menu() {
+  $items['lc_news'] = array(
+    'title' => "lc_news",
+    'description' => t('Provide news + login link.'),
+    'page callback' => 'lc_news_page',
+    'access callback' => 'spaces_access_feature',
+    'access arguments' => array('view', 'lc_lc_news'),
+    'menu_name' => 'features',
+    'weight' => -1000,
+  );
+  $items['features/lc_news'] = array(
+    'title' => 'Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('lc_news_settings'),
+    'access callback' => 'spaces_access_admin', // TODO change access to just check if person has role of admin.
+    'access arguments' => array(),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}

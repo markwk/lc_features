@@ -1,0 +1,110 @@
+.eduglu-about-stats-boxes-container {
+  xmargin-top: 35px;
+  margin-bottom: 10px;
+}
+.eduglu-about-stats-box {
+  border: 1px solid lightGrey;
+  background: #F7F7F9;
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  height: 65px;
+}
+.eduglu-about-stats-box div{
+  left: 10px;
+  top: 15px
+}
+.eduglu-about-bottom-img {
+  position: absolute;
+  left: 17px;
+  bottom: 16px;
+}
+.eduglu-about-stats-label {
+  position: absolute;
+  right: 42px;
+  bottom: -15px;
+  font-size: 8pt;
+  z-index: 5;
+}
+
+.eduglu-about-stats-box-label {
+  position: absolute;
+  left: 20px;
+  top: 5px;
+}
+.eduglu-about-top-contributor-name {
+  font-size: 150%;
+  font-style: larger;
+}
+.eduglu-about-top-contributor-picture {
+  float: left;
+  margin: 0 15px 0 10px;
+  height: 100px;
+}
+.eduglu-about-top-contributor-box {
+  border: 1px solid lightGrey;
+  background: #F7F7F9;
+  margin-bottom: 5px;
+  padding: 10px 0;
+}
+.page-about-group h3 {
+  border-bottom: 2px solid lightgrey;
+}
+.eduglu-about-members {
+  border: 1px solid lightGrey;
+  background: #F7F7F9;
+  margin-bottom: 10px;
+  padding: 19px;
+  overflow: auto;
+}
+.eduglu-about-members a img, .eduglu-about-members a.eduglu-about-group-member-picture {
+  border: none;
+  overflow: hidden;
+  float: left;
+}
+.eduglu-about-members a.eduglu-about-group-member-picture:hover {
+  border: 2px solid black;
+}
+.eduglu-about-members a:hover img {
+  margin: -2px;
+}
+
+/* Kill page title, Unneeded */
+.page-about-group #page-title {
+  display: none;
+}
+.eduglu-about-group-description {
+  font-size: larger;
+  font-style: italic;
+  margin-top: 10px;
+  border-bottom: 1px solid lightGrey;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+.eduglu-about-group-label strong {
+  float: right;
+}
+.eduglu-about-about-group {
+  border: 1px solid lightGrey;
+  background: #F7F7F9;
+  margin-bottom: 10px;
+  padding: 10px 0;
+}
+.view-eduglu-about-members th, .view-eduglu-about-members td, .view-eduglu-about-members caption {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.view-eduglu-about-members tr div{
+  float: left;
+}
+.view-eduglu-about-members .views-field-name {
+  width: 50%;
+}
+.view-eduglu-about-members .views-field-picture {
+  margin-right: 10px;
+}
+.view-eduglu-about-members tr {
+  border-bottom: 1px solid lightgrey;
+}
+.view-eduglu-about-members .striped {
+  background-color: #F2F2F2;
+}

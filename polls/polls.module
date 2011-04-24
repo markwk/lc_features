@@ -1,0 +1,38 @@
+<?php
+
+include_once('polls.features.inc');
+
+/**
+* Implementation of hook_init().
+*/
+function polls_init() {
+  drupal_add_css(drupal_get_path('module', 'polls') .'/polls.css');
+}
+
+/**
+* Implementation of hook_help().
+*/
+function polls_help($path) {
+  // Central help page content.
+  if ($path == 'admin/help#polls') {
+    $help = '<h3>'. t('Polls') .'</h3>';
+    $help .= '<p>'. t("The polling area lets you poll your team and then see the results.") .'</p>';
+    $help .= '<p>'. t("To add a poll, navigate to the polls area and click the __Add poll__ button.  Then click __Save__.") .'</p>';
+    return $help;
+  }
+
+  // Contextual help content.
+  if (context_isset('context', 'spaces-feature-poll')) {
+    if ($path == 'node/add/poll') {
+      $help = '';
+      $help .= '<h3>'. t('Poll') .'</h3>';
+      $help .= '<p>'. t("Post a poll in this group. The polling question and results will be shared will all team members in the Polling area.") .'</p>';
+      return $help;
+    }
+    else {
+      $help = '<h3>'. t('Polls') .'</h3>';
+      $help .= '<p>'. t("The polls feature lets you post polls in a group and then see the results.") .'</p>';
+      return $help;
+    }
+  }
+}

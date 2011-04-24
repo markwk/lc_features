@@ -1,0 +1,30 @@
+<?php 
+
+/** 
+ * Implementation of hook_enable
+ */
+function atrium_apachesolr_search_enable() { 
+  // Offer a link to finalize settings
+  drupal_set_message(t('The Apache Solr search feature is now enabled. Click !here to enter your solr server information.', 
+      array('!here' => l(t('here'), 'admin/settings/apachesolr'))));
+
+
+  // Be aware of the attachment indexing module
+  if (module_exists('apachesolr_attachments')) { 
+    drupal_set_message(t('The Apachesolr Attachments module is enabled. Don\'t forget to !edit.', 
+      array('!edit' => l(t('edit your settings'), 'admin/settings/apachesolr/attachments'))));
+  }
+  else { 
+    drupal_set_message(t('If you would like to index file attachments, see out !this',
+      array('!this' => l(t('the Apachesolr Attachments module'), 'http://drupal.org/project/apachesolr_attachments'))));
+  }
+}
+
+/** 
+ * Implementation of hook_requirements 
+ */
+ /*
+function atrium_apachesolr_search_requirements() { 
+
+}
+*/

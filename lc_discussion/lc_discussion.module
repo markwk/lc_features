@@ -1,0 +1,38 @@
+<?php
+
+include_once('lc_discussion.features.inc');
+
+/**
+* Implementation of hook_init().
+*/
+function lc_discussion_init() {
+  drupal_add_css(drupal_get_path('module', 'lc_discussion') .'/lc_discussion.css');
+}
+
+/**
+* Implementation of hook_help().
+*/
+function lc_discussion_help($path) {
+  // Central help page content.
+  if ($path == 'admin/help#lc_discussion') {
+    $help = '<h3>'. t('Discussions') .'</h3>';
+    $help .= '<p>'. t("The Discussions lets you add, share and study different vocabulary") .'</p>';
+    $help .= '<p>'. t("To add a discussion, navigate to the discussions page and click the __Add discussion__ button.  Then click __Save__.") .'</p>';
+    return $help;
+  }
+
+  // Contextual help content.
+  if (context_isset('context', 'spaces-feature-discussion')) {
+    if ($path == 'node/add/story') {
+      $help = '';
+      $help .= '<h3>'. t('Discussion') .'</h3>';
+      $help .= '<p>'. t("Post a discussion to study in this group. The discussion will be shared will all team members.") .'</p>';
+      return $help;
+    }
+    else {
+      $help = '<h3>'. t('Discussion') .'</h3>';
+      $help .= '<p>'. t("Discussions lets you post discussions in a group.") .'</p>';
+      return $help;
+    }
+  }
+}

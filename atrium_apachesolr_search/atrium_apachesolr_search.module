@@ -1,0 +1,114 @@
+<?php
+
+include_once('atrium_apachesolr_search.features.inc');
+
+/** 
+ * Implementation of hook_init()
+ */
+function atrium_apachesolr_search_init() { 
+  // Disable the atrium search view
+  $views_status = variable_get('views_defaults', array());
+  if ($views_status['atrium_search'] != TRUE) { 
+    $views_status['atrium_search'] = TRUE; // true is disabled
+    variable_set('views_defaults', $views_status);
+    views_invalidate_cache();
+    menu_rebuild();
+  }
+}
+
+
+/** 
+ * Implementation of hook_menu_alter
+ */
+function atrium_apachesolr_search_menu_alter(&$items) { 
+  $items['search'] = array(
+    'title' => 'Search',
+    'page callback' => 'atrium_apachesolr_search_view',
+    'access arguments' => array('search content'),
+    'type' => MENU_SUGGESTED_ITEM,
+  );
+}
+
+/** 
+ * Implementation of hook_form_alter
+ */
+function atrium_apachesolr_search_form_alter(&$form, $form_state, $form_id) { 
+  switch ($form_id) { 
+    case 'search_form':
+      drupal_add_css(drupal_get_path('module', 'atrium_apachesolr_search') .'/css/atrium_apachesolr_form.css');
+      unset($form['#submit']);
+      $form['#submit'] = array('atrium_apachesolr_search_form_submit'); 
+      break;
+    case 'search_theme_form':
+      unset($form['#submit']);
+      $form['#submit'] = array('atrium_apachesolr_search_form_submit'); 
+      break;
+    case 'atrium_search_form':
+      $form['submit']['#submit'] = array('atrium_apachesolr_search_form_submit'); 
+      break;
+  } 
+}
+
+/** 
+ * Send the searches to apachesolr
+ */
+function atrium_apachesolr_search_form_submit(&$form, &$form_state) { 
+  // Look for our search terms in the right place
+  if ($form_state['values']['search']) { 
+    $search = $form_state['values']['search'];
+  }
+  else { 
+    $search = $form_state['values']['keys'];
+  }
+
+  // Add an appropriate filter if we were searching from within a group
+  $current_space = spaces_get_space();
+  if ($current_space && $current_space->type == 'og') { 
+    $query = 'filters=im_og_gid:'. $current_space->id;
+  }
+
+  $form_state['redirect'] = array('search/apachesolr_search/'. $search, $query);
+}
+
+/**
+ * Menu callback; presents the search form and/or search results.
+ */
+function atrium_apachesolr_search_view($type = 'node') {
+  // Search form submits with POST but redirects to GET. This way we can keep
+  // the search query URL clean as a whistle:
+  // search/type/keyword+keyword
+  if (!isset($_POST['form_id'])) {
+    if ($type == '') {
+      // Note: search/node can not be a default tab because it would take on the
+      // path of its parent (search). It would prevent remembering keywords when
+      // switching tabs. This is why we drupal_goto to it from the parent instead.
+      drupal_goto('search/node');
+    }
+
+    $keys = search_get_keys();
+    // Only perform search if there is non-whitespace search term:
+    $results = '';
+    if (trim($keys)) {
+      // Log the search keys:
+      watchdog('search', '%keys (@type).', array('%keys' => $keys, '@type' => module_invoke($type, 'search', 'name')), WATCHDOG_NOTICE, l(t('results'), 'search/'. $type .'/'. $keys));
+
+      // Collect the search results:
+      $results = search_data($keys, $type);
+
+      if ($results) {
+        $results = theme('box', t('Search results'), $results);
+      }
+      else {
+        $results = theme('box', t('Your search yielded no results'), search_help('search#noresults', drupal_help_arg()));
+      }
+    }
+
+    // Construct the search form.
+    $output = drupal_get_form('search_form', NULL, $keys, $type);
+    $output .= $results;
+
+    return $output;
+  }
+
+  return drupal_get_form('search_form', NULL, empty($keys) ? '' : $keys, $type);
+}
