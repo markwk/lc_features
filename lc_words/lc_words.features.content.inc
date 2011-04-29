@@ -6,6 +6,138 @@
 function lc_words_content_default_fields() {
   $fields = array();
 
+  // Exported field: field_sentence
+  $fields['word-field_sentence'] = array(
+    'field_name' => 'field_sentence',
+    'type_name' => 'word',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      '5' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '1',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_sentence][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Sample Sentence',
+      'weight' => '-5',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_transl_lang
+  $fields['word-field_transl_lang'] = array(
+    'field_name' => 'field_transl_lang',
+    'type_name' => 'word',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      '5' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => 'en | English
+zh-hans | Chinese (simplified)
+fr | French
+sv | Swedish',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Translation Language',
+      'weight' => '-3',
+      'description' => 'Language of translation',
+      'type' => 'optionwidgets_select',
+      'module' => 'optionwidgets',
+    ),
+  );
+
   // Exported field: field_translation
   $fields['word-field_translation'] = array(
     'field_name' => 'field_translation',
@@ -66,7 +198,7 @@ function lc_words_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Translation',
-      'weight' => '-6',
+      'weight' => '-4',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -134,7 +266,7 @@ function lc_words_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Definition',
-      'weight' => '-7',
+      'weight' => '-6',
       'description' => '',
       'type' => 'text_textarea',
       'module' => 'text',
@@ -215,15 +347,6 @@ function lc_words_content_default_fields() {
         'fid' => '206',
       ),
       'use_default_image' => 1,
-      'filefield_sources' => array(
-        'remote' => 0,
-        'reference' => 0,
-        'attach' => 0,
-      ),
-      'filefield_source_attach_path' => 'file_attach',
-      'filefield_source_attach_absolute' => '0',
-      'filefield_source_attach_mode' => 'move',
-      'filefield_source_autocomplete' => '0',
       'insert' => 0,
       'insert_styles' => array(
         'auto' => 0,
@@ -242,11 +365,86 @@ function lc_words_content_default_fields() {
       'insert_default' => 'auto',
       'insert_class' => '',
       'insert_width' => '',
+      'filefield_sources' => array(
+        'remote' => 0,
+        'reference' => 0,
+        'attach' => 0,
+      ),
+      'filefield_source_attach_path' => 'file_attach',
+      'filefield_source_attach_absolute' => '0',
+      'filefield_source_attach_mode' => 'move',
+      'filefield_source_autocomplete' => '0',
       'label' => 'Image',
-      'weight' => '-5',
+      'weight' => '-2',
       'description' => 'Upload an image in order to remember the word. ',
       'type' => 'imagefield_widget',
       'module' => 'imagefield',
+    ),
+  );
+
+  // Exported field: field_word_lang
+  $fields['word-field_word_lang'] = array(
+    'field_name' => 'field_word_lang',
+    'type_name' => 'word',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      '5' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => 'en | English
+zh-hans | Chinese (simplified)
+fr | French
+sv | Swedish',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Word Language',
+      'weight' => '-8',
+      'description' => 'Select the language of the word itself. ',
+      'type' => 'optionwidgets_select',
+      'module' => 'optionwidgets',
     ),
   );
 
@@ -311,7 +509,7 @@ adv | adverb',
       ),
       'default_value_php' => NULL,
       'label' => 'Word Type',
-      'weight' => '-8',
+      'weight' => '-7',
       'description' => 'Type of word (noun, verb, adjective, adverb)',
       'type' => 'optionwidgets_buttons',
       'module' => 'optionwidgets',
@@ -322,7 +520,10 @@ adv | adverb',
   // Included for use with string extractors like potx.
   t('Definition');
   t('Image');
+  t('Sample Sentence');
   t('Translation');
+  t('Translation Language');
+  t('Word Language');
   t('Word Type');
 
   return $fields;

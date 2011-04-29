@@ -74,14 +74,14 @@ function lc_words_strongarm() {
   $strongarm->name = 'content_extra_weights_word';
   $strongarm->value = array(
     'title' => '-9',
-    'revision_information' => '-1',
-    'author' => '0',
-    'options' => '1',
-    'comment_settings' => '2',
-    'menu' => '-3',
-    'book' => '-4',
-    'og_nodeapi' => '-2',
-    'vud_node_widget_display' => '-10',
+    'revision_information' => '3',
+    'author' => '4',
+    'options' => '5',
+    'comment_settings' => '6',
+    'menu' => '1',
+    'taxonomy' => '0',
+    'book' => '-1',
+    'og_nodeapi' => '2',
   );
 
   $export['content_extra_weights_word'] = $strongarm;
