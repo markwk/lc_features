@@ -1,9 +1,0 @@
-#features-menu li a.icon-words span.icon {
-  background:url(images/word2word.png) no-repeat;
-}
-
-.feature .feature-imageboard {
-  background:transparent url(images/word_image_icon.png) no-repeat;
-}
-
-span.spaces-feature.feature-lc_words { background:url(images/word_image_icon.png) no-repeat; height:20px; width:20px; }

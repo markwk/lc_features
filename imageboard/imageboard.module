@@ -36,3 +36,4 @@ function imageboard_help($path) {
     }
   }
 }
+
