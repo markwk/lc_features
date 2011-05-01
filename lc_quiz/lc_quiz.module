@@ -31,6 +31,34 @@ function lc_quiz_recent() {
   return views_embed_view('lc_latest_quizzes', 'page_1');
 }
 
+
+/**
+ * Implementation of hook_menu_alter().
+ */
+function lc_quiz_menu_alter(&$items) {
+  // Remove shoutbox node add page.
+  if (isset($items['node/add/long-answer'])) {
+    unset($items['node/add/long-answer']);
+  }
+  if (isset($items['node/add/matching'])) {
+    unset($items['node/add/matching']);
+  }    
+  if (isset($items['node/add/multichoice'])) {
+    unset($items['node/add/multichoice']);
+  } 
+  if (isset($items['node/add/quiz-directions'])) {
+    unset($items['node/add/quiz-directions']);
+  } 
+  if (isset($items['node/add/short-answer'])) {
+    unset($items['node/add/short-answer']);
+  } 
+  if (isset($items['node/add/truefalse'])) {
+    unset($items['node/add/truefalse']);
+  } 
+}
+
+
+
 // Hook into views and restrict access by views to the workflows
 function lc_quiz_views_query_alter(&$view, &$query) {
   if ($view->name == "lc_latest_quizzes" && $space = spaces_get_space()) {
