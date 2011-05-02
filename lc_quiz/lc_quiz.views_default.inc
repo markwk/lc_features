@@ -247,10 +247,6 @@ function lc_quiz_views_default_views() {
     'weight' => '0',
     'name' => 'navigation',
   ));
-  $translatables['lc_latest_quizzes'] = array(
-    t('Defaults'),
-    t('Page'),
-  );
 
   $views[$view->name] = $view;
 
@@ -536,10 +532,6 @@ function lc_quiz_views_default_views() {
     'weight' => '0',
     'name' => 'navigation',
   ));
-  $translatables['lc_quiz_by_taker'] = array(
-    t('Defaults'),
-    t('Page'),
-  );
 
   $views[$view->name] = $view;
 
